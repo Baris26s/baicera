@@ -3,608 +3,450 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Baicera | Professionele schoonmaak in Gent & omgeving</title>
-  <meta name="description" content="Baicera biedt professionele schoonmaakdiensten voor scholen, kantoren en bedrijven in Gent & omgeving. Offerte op maat, betrouwbare service, hoge kwaliteit." />
-  <meta name="theme-color" content="#0b0f14" />
+  <title>Baicera | Premium schoonmaak met een artistieke touch</title>
+  <meta name="description" content="Baicera: professionele schoonmaakdiensten in Gent. Kantoren, scholen, bedrijven. Premium service met een verfijnde, artistieke uitstraling." />
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#111826;
-      --card2:#0f1623;
-      --text:#eaf0ff;
-      --muted:#aeb9d6;
-      --line:rgba(255,255,255,.10);
-      --soft:rgba(255,255,255,.06);
-      --accent:#d8c6a6; /* warm premium */
-      --accent2:#9fb7ff;
+      /* Brand mood: navy + champagne/gold + aqua accent (reference look) */
+      --bg:#06122b;
+      --bg2:#030a18;
+
+      --text:#eef3ff;
+      --muted:#b7c3e6;
+
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 22px 70px rgba(0,0,0,.45);
+
+      --aqua:#1fd6e5;         /* keeps the "reference" vibe */
+      --champ:#d8c6a6;        /* artistic / luxury */
+      --champ2:#f3ead7;       /* soft nude */
+      --ink:#071126;
+
       --radius:18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --shadow2: 0 12px 40px rgba(0,0,0,.28);
-      --max: 1120px;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(159,183,255,.20), transparent 60%),
-                  radial-gradient(900px 700px at 95% 10%, rgba(216,198,166,.18), transparent 55%),
-                  radial-gradient(800px 700px at 40% 110%, rgba(216,198,166,.14), transparent 55%),
-                  var(--bg);
       color:var(--text);
-      line-height:1.55;
+      background:
+        radial-gradient(1100px 700px at 50% -12%, rgba(31,214,229,.16), transparent 60%),
+        radial-gradient(900px 650px at 88% 18%, rgba(216,198,166,.16), transparent 60%),
+        radial-gradient(700px 520px at 18% 110%, rgba(243,234,215,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .topbar{
-      position:sticky; top:0; z-index:30;
-      backdrop-filter:saturate(160%) blur(10px);
-      background: linear-gradient(to bottom, rgba(11,15,20,.82), rgba(11,15,20,.50));
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px; text-decoration:none;
-      font-weight:700; letter-spacing:.2px;
-    }
-    .mark{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(216,198,166,.30), rgba(159,183,255,.22));
-      border:1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25) inset;
-      display:grid; place-items:center;
+
+    /* TOP */
+    header{
+      padding:48px 0 18px;
+      text-align:center;
       position:relative;
-      overflow:hidden;
     }
-    .mark:before{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 55%);
-      transform:rotate(20deg);
-    }
-    .mark span{position:relative; font-weight:900; color:rgba(255,255,255,.92)}
-    .links{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
-    .links a{
-      text-decoration:none; color:var(--muted);
-      font-weight:600; font-size:14px;
-      padding:10px 10px; border-radius:12px;
-    }
-    .links a:hover{background:var(--soft); color:var(--text)}
-    .cta{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      text-decoration:none;
-      font-weight:700; font-size:14px;
-      color:var(--text);
-      background: rgba(255,255,255,.03);
-    }
-    .btn:hover{background:rgba(255,255,255,.06)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(216,198,166,.25), rgba(159,183,255,.18));
-      border-color: rgba(216,198,166,.35);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .btn.primary:hover{filter:brightness(1.05)}
-    .hero{
-      padding:48px 0 18px 0;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:20px;
-      align-items:stretch;
-    }
-    .heroCard{
-      border:1px solid var(--line);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      padding:26px;
-      min-height: 320px;
-    }
-    .heroCard:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(700px 300px at 25% 15%, rgba(159,183,255,.18), transparent 60%),
-                  radial-gradient(700px 300px at 85% 40%, rgba(216,198,166,.18), transparent 60%);
-      pointer-events:none;
-    }
-    .heroInner{position:relative}
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-weight:700;
-      font-size:13px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(216,198,166,.14);
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(28px, 4vw, 46px);
-      line-height:1.1;
-      letter-spacing:-.6px;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:16px;
-      max-width: 60ch;
-      margin:0 0 16px;
-    }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .mini{
-      display:flex; gap:12px; flex-wrap:wrap;
-      margin-top:16px;
-      color:var(--muted);
-      font-weight:650;
-      font-size:13px;
-    }
-    .mini span{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px; border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      border-radius:999px;
-    }
-    .sideCard{
-      border:1px solid var(--line);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(17,24,38,.92), rgba(15,22,35,.92));
-      box-shadow: var(--shadow2);
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-      min-height: 320px;
-    }
-    .sideCard:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(420px 260px at 30% 20%, rgba(216,198,166,.16), transparent 60%);
-      pointer-events:none;
-    }
-    .sideInner{position:relative}
-    .sideTitle{
-      font-weight:900; letter-spacing:-.2px; margin:0 0 8px;
-      font-size:18px;
-    }
-    .sideText{margin:0 0 14px; color:var(--muted)}
-    .list{
-      margin:0; padding-left:18px; color:var(--muted);
-    }
-    .list li{margin:8px 0}
-    .section{padding:18px 0}
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding:18px;
-    }
-    .card h3{margin:0 0 6px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-size:14px}
-    .titleRow{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin:8px 0 14px;
-    }
-    .titleRow h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.3px;
-    }
-    .titleRow .hint{color:var(--muted); font-weight:650}
-    .services{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-    }
-    .service{
-      grid-column: span 4;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      padding:18px;
-      min-height: 148px;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color:var(--muted);
-      font-weight:800;
-      font-size:12px;
+    .brandRow{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
       margin-bottom:10px;
     }
-    .service h3{margin:4px 0 6px; font-size:16px}
-    .service ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
-    .service li{margin:6px 0}
-    .proof{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
+    .logoMark{
+      width:44px;height:44px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 55%),
+        linear-gradient(135deg, rgba(216,198,166,.22), rgba(31,214,229,.14));
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      display:grid;place-items:center;
+      position:relative;
+      overflow:hidden;
     }
-    .quote{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding:18px;
+    .logoMark:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 20% 30%, rgba(255,255,255,.14), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
     }
-    .quote p{margin:0 0 10px; color:var(--muted)}
-    .quote strong{color:var(--text)}
-    .contact{
-      border:1px solid var(--line);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      padding:22px;
-      box-shadow: var(--shadow2);
+    .logoMark span{
+      position:relative;
+      font-weight:1000;
+      letter-spacing:.5px;
+      color:rgba(255,255,255,.92);
     }
-    .contactGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      align-items:start;
+    .brandName{
+      font-weight:1000;
+      letter-spacing:.2px;
+      font-size:18px;
     }
-    .infoRow{
-      display:flex; flex-direction:column; gap:10px;
+
+    .title{
+      font-size:clamp(28px, 4vw, 44px);
+      margin:0 0 10px;
+      letter-spacing:-.7px;
+      font-weight:1000;
+    }
+    .subtitle{
+      margin:0 auto;
+      max-width:90ch;
       color:var(--muted);
       font-weight:650;
-    }
-    .infoRow a{color:var(--text); text-decoration:none}
-    .infoRow a:hover{text-decoration:underline}
-    .form{
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-    }
-    label{font-size:12px; color:var(--muted); font-weight:800; letter-spacing:.2px}
-    input, textarea{
-      width:100%;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      color:var(--text);
-      padding:12px 12px;
-      font: inherit;
-      outline:none;
-    }
-    textarea{min-height:92px; resize:vertical}
-    input:focus, textarea:focus{border-color: rgba(216,198,166,.45)}
-    .footer{
-      padding:26px 0 36px;
-      color:var(--muted);
-      border-top:1px solid var(--line);
-      margin-top:18px;
+      line-height:1.6;
       font-size:14px;
     }
-    .small{font-size:12px; color:var(--muted)}
-    /* WhatsApp floating button */
-    .wa{
-      position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:50;
+    .topActions{
+      margin-top:18px;
       display:flex;
-      align-items:center;
+      justify-content:center;
       gap:10px;
-      padding:12px 14px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(17,24,38,.88);
-      backdrop-filter: blur(10px);
+      background:rgba(255,255,255,.05);
       text-decoration:none;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
       font-weight:900;
+      font-size:13px;
     }
-    .waIcon{
-      width:34px; height:34px; border-radius:999px;
+    .pill.primary{
+      background:linear-gradient(135deg, rgba(31,214,229,.20), rgba(216,198,166,.16));
+      border-color:rgba(216,198,166,.28);
+    }
+
+    /* GRID */
+    .grid{
+      padding:18px 0 70px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      position:relative;
+    }
+
+    .photo{
+      height:190px;
+      position:relative;
+      overflow:hidden;
+      background:#0a1631;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.06) contrast(1.06);
+      transform:scale(1.02);
+    }
+    .photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.36));
+      pointer-events:none;
+    }
+
+    /* Artistic overlay corner (subtle) */
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-80px; right:-80px;
+      width:180px; height:180px;
+      background: radial-gradient(circle at 30% 30%, rgba(216,198,166,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    .panel{
+      padding:16px 18px 18px;
+      background:rgba(255,255,255,.94);
+      color:var(--ink);
+      position:relative;
+    }
+
+    /* Alternating styles to mimic reference + add art vibe */
+    .panel.aqua{
+      background:linear-gradient(180deg, rgba(31,214,229,.92), rgba(31,214,229,.86));
+      color:#022028;
+    }
+    .panel.champ{
+      background:linear-gradient(180deg, rgba(243,234,215,.96), rgba(216,198,166,.88));
+      color:#1a1b15;
+    }
+
+    .iconBox{
+      width:46px; height:46px;
+      border-radius:12px;
       display:grid; place-items:center;
-      background: rgba(216,198,166,.18);
-      border:1px solid rgba(216,198,166,.28);
+      margin-top:-30px;
+      margin-bottom:10px;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+      border:1px solid rgba(0,0,0,.08);
+      background:rgba(255,255,255,.92);
     }
-    .wa span{color:var(--text)}
-    .wa small{display:block; color:var(--muted); font-weight:800; margin-top:2px}
+    .panel.aqua .iconBox{
+      background:rgba(255,255,255,.30);
+      border-color:rgba(255,255,255,.35);
+    }
+    .panel.champ .iconBox{
+      background:rgba(255,255,255,.55);
+      border-color:rgba(255,255,255,.50);
+    }
+
+    .h3{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .p{
+      margin:0 0 14px;
+      font-size:13px;
+      line-height:1.55;
+      font-weight:650;
+      color:rgba(7,17,38,.72);
+    }
+    .panel.aqua .p{color:rgba(2,32,40,.82)}
+    .panel.champ .p{color:rgba(26,27,21,.82)}
+
+    .btnRow{
+      display:flex; justify-content:center;
+      padding-top:2px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 18px;
+      border-radius:999px;
+      font-weight:1000;
+      letter-spacing:.9px;
+      font-size:11px;
+      text-decoration:none;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--aqua);
+      color:#01202a;
+      text-transform:uppercase;
+      box-shadow:0 16px 40px rgba(0,0,0,.15);
+    }
+    .panel.aqua .btn{
+      background:#ffffff;
+      color:#031a22;
+      border-color:rgba(255,255,255,.45);
+    }
+    .panel.champ .btn{
+      background:#0a1631;
+      color:#eef3ff;
+      border-color:rgba(0,0,0,.12);
+    }
+    .btn:hover{filter:brightness(1.04)}
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding:18px 0 22px;
+      color:var(--muted);
+      text-align:center;
+      font-weight:650;
+      font-size:13px;
+    }
+
+    /* WhatsApp */
+    .wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:100;
+      width:54px; height:54px;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg, rgba(31,214,229,.95), rgba(216,198,166,.55));
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.30);
+      text-decoration:none;
+    }
+
     /* Responsive */
     @media (max-width: 980px){
-      .heroGrid{grid-template-columns: 1fr}
-      .grid3{grid-template-columns: 1fr}
-      .services{grid-template-columns: 1fr}
-      .service{grid-column: auto}
-      .proof{grid-template-columns: 1fr}
-      .contactGrid{grid-template-columns: 1fr}
-      .links{display:none}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .photo{height:200px}
     }
   </style>
 </head>
+
 <body>
-
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Baicera">
-          <div class="mark"><span>B</span></div>
-          <div>Baicera</div>
-        </a>
-
-        <div class="links" aria-label="Navigatie">
-          <a href="#diensten">Diensten</a>
-          <a href="#sectoren">Sectoren</a>
-          <a href="#waarom">Waarom Baicera</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="cta">
-          <a class="btn" href="mailto:info@baicera.be">E-mail</a>
-          <a class="btn primary" href="#contact">Offerte aanvragen</a>
-        </div>
-      </div>
+  <header class="wrap">
+    <div class="brandRow" aria-label="Baicera">
+      <div class="logoMark"><span>B</span></div>
+      <div class="brandName">Baicera</div>
     </div>
-  </div>
 
-  <main id="top" class="wrap">
-    <section class="hero">
-      <div class="heroGrid">
-        <div class="heroCard">
-          <div class="heroInner">
-            <div class="kicker"><span class="dot"></span> Professionele schoonmaak in Gent & omgeving</div>
-            <h1>Betrouwbare schoonmaak voor scholen, kantoren en bedrijven.</h1>
-            <p class="sub">
-              Baicera levert consistente kwaliteit met duidelijke communicatie en een aanpak op maat.
-              Van dagelijkse onderhoudsreiniging tot periodieke deep cleaning.
-            </p>
+    <h1 class="title">Professionele schoonmaakdiensten in Gent voor elk bedrijf</h1>
+    <p class="subtitle">
+      Baicera combineert professionele hygiene met een verfijnde uitstraling. Een schone werkplek is ook een visitekaartje:
+      strak, fris en tot in detail afgewerkt.
+    </p>
 
-            <div class="heroActions">
-              <a class="btn primary" href="#contact">Vraag een offerte</a>
-              <a class="btn" href="#diensten">Bekijk diensten</a>
-            </div>
+    <div class="topActions">
+      <a class="pill primary" href="#diensten">Gratis offerte</a>
+      <a class="pill" href="mailto:info@baicera.be">info@baicera.be</a>
+      <a class="pill" href="tel:+32499367584">+32 499 36 75 84</a>
+    </div>
+  </header>
 
-            <div class="mini" aria-label="Snelle voordelen">
-              <span>✓ Snelle opstart</span>
-              <span>✓ Vaste afspraken</span>
-              <span>✓ Kwaliteitscontrole</span>
-            </div>
+  <main class="wrap" id="diensten">
+    <div class="grid">
+      <!-- 1: white -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=70" alt="Industriele schoonmaak" />
+        </div>
+        <div class="panel">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 20h16M6 20V9a2 2 0 0 1 2-2h3m5 13V7a2 2 0 0 0-2-2h-1" stroke="#0b1530" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 7V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" stroke="#0b1530" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="h3">Industriele Schoonmaak</h3>
+          <p class="p">Strikte hygiene, veiligheid en een efficient team. Grondige reiniging voor industriële zones en werkplekken.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Industriele%20schoonmaak">Gratis offerte</a>
           </div>
         </div>
+      </article>
 
-        <aside class="sideCard">
-          <div class="sideInner">
-            <h3 class="sideTitle">Direct contact</h3>
-            <p class="sideText">Stuur ons je vraag, we antwoorden snel.</p>
-            <ul class="list">
-              <li><strong>Telefoon:</strong> 0499 36 75 84</li>
-              <li><strong>E-mail:</strong> info@baicera.be</li>
-              <li><strong>Regio:</strong> Gent + omgeving</li>
-            </ul>
-            <div style="height:12px"></div>
-            <a class="btn primary" href="#contact">Offerte op maat</a>
-            <a class="btn" href="#waarom" style="margin-left:8px">Waarom wij</a>
+      <!-- 2: aqua -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=70" alt="Kantoorschoonmaak" />
+        </div>
+        <div class="panel aqua">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 20h16M6 20V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12" stroke="#031a22" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 10h6M9 13h6M9 16h6" stroke="#031a22" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="diensten" class="section">
-      <div class="titleRow">
-        <h2>Diensten</h2>
-        <div class="hint">Heldere planning • Strakke uitvoering</div>
-      </div>
-
-      <div class="services">
-        <div class="service">
-          <div class="badge">Onderhoud</div>
-          <h3>Dagelijkse / wekelijkse schoonmaak</h3>
-          <ul>
-            <li>Stofzuigen, dweilen, sanitair</li>
-            <li>Afvalbeheer & aanvullen</li>
-            <li>Werkplekken & gemeenschappelijke ruimtes</li>
-          </ul>
-        </div>
-
-        <div class="service">
-          <div class="badge">Periodiek</div>
-          <h3>Deep cleaning & detailwerk</h3>
-          <ul>
-            <li>Keukens, refters, trappenhallen</li>
-            <li>Ontkalking & desinfectie</li>
-            <li>Seizoens- en eindejaarsreiniging</li>
-          </ul>
-        </div>
-
-        <div class="service">
-          <div class="badge">Extra</div>
-          <h3>Ramen & specifieke zones</h3>
-          <ul>
-            <li>Ramen (binnen) en glaspartijen</li>
-            <li>Inkom, vitrines, touchpoints</li>
-            <li>Op aanvraag: maatwerk</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="sectoren" class="section">
-      <div class="titleRow">
-        <h2>Sectoren</h2>
-        <div class="hint">We kennen de realiteit op de werkvloer</div>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Scholen & VZW</h3>
-          <p>Dagelijkse netheid, hygienezones, duidelijke planning rond schooluren.</p>
-        </div>
-        <div class="card">
-          <h3>Kantoren</h3>
-          <p>Frisse werkplekken, meeting rooms, sanitair en keukenzones met vaste checklists.</p>
-        </div>
-        <div class="card">
-          <h3>Bedrijven & sites</h3>
-          <p>Gemeenschappelijke ruimtes, inkom, trappen, refter en periodieke diepreiniging.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="waarom" class="section">
-      <div class="titleRow">
-        <h2>Waarom Baicera</h2>
-        <div class="hint">Kwaliteit die je merkt</div>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Betrouwbaar team</h3>
-          <p>Vaste afspraken, duidelijke communicatie, respect voor jouw locatie en regels.</p>
-        </div>
-        <div class="card">
-          <h3>Checklist & controle</h3>
-          <p>We werken met checklists en kwaliteitsmomenten zodat het resultaat constant blijft.</p>
-        </div>
-        <div class="card">
-          <h3>Offerte op maat</h3>
-          <p>Geen standaardpakket: we passen frequentie en taken aan jouw noden aan.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Referenties">
-      <div class="titleRow">
-        <h2>Reeds actief op locaties</h2>
-        <div class="hint">Voorbeeld van lopende opdrachten</div>
-      </div>
-
-      <div class="proof">
-        <div class="quote">
-          <p>
-            We leveren schoonmaakdiensten op o.a. <strong>Redloft</strong>, <strong>Studio 17</strong> en <strong>OLVI</strong>.
-            (Details en planning zijn steeds bespreekbaar per locatie.)
-          </p>
-          <div class="small">Wil je een vergelijkbare aanpak? Vraag een offerte.</div>
-        </div>
-        <div class="quote">
-          <p>
-            Onze focus: <strong>consistent resultaat</strong>, <strong>snelle opvolging</strong> en
-            <strong>een professionele uitstraling</strong> voor jouw organisatie.
-          </p>
-          <div class="small">Gent & omgeving • Scholen • Kantoren • Bedrijven</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="titleRow">
-        <h2>Contact & offerte</h2>
-        <div class="hint">Stuur de details, wij reageren snel</div>
-      </div>
-
-      <div class="contact">
-        <div class="contactGrid">
-          <div>
-            <div class="infoRow">
-              <div><strong>Telefoon:</strong> <a href="tel:+32499367584">+32 499 36 75 84</a></div>
-              <div><strong>E-mail:</strong> <a href="mailto:info@baicera.be">info@baicera.be</a></div>
-              <div><strong>Regio:</strong> Gent & omgeving</div>
-              <div class="small">
-                Tip: voor een snelle offerte, stuur ons: adres, type gebouw, gewenste frequentie en m2 (indien bekend).
-              </div>
-            </div>
-            <div style="height:12px"></div>
-            <a class="btn primary" href="mailto:info@baicera.be?subject=Offerte%20aanvraag%20-%20Baicera&body=Hallo%20Baicera%2C%0A%0AGraag%20een%20offerte%20voor%20schoonmaak.%0A%0AAdres%3A%20%0ASector%3A%20(school%2Fkantoor%2Fbedrijf)%0AFrequentie%3A%20%0AM2%3A%20%0AExtra%20info%3A%20%0A%0ADank%20u%21">Offerte via e-mail</a>
-            <a class="btn" href="tel:+32499367584" style="margin-left:8px">Bel ons</a>
+          <h3 class="h3">Kantoorschoonmaak</h3>
+          <p class="p">Frisse werkplekken met vaste checklists. Sanitair, keuken, meeting rooms en touchpoints perfect op orde.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Kantoorschoonmaak">Gratis offerte</a>
           </div>
-
-          <form class="form" onsubmit="return openMail(event)">
-            <div class="field">
-              <label for="naam">Naam</label>
-              <input id="naam" name="naam" placeholder="Jouw naam" required />
-            </div>
-            <div class="field">
-              <label for="bedrijf">Bedrijf / organisatie</label>
-              <input id="bedrijf" name="bedrijf" placeholder="Optioneel" />
-            </div>
-            <div class="field">
-              <label for="email">E-mail</label>
-              <input id="email" name="email" type="email" placeholder="jij@bedrijf.be" required />
-            </div>
-            <div class="field">
-              <label for="bericht">Bericht</label>
-              <textarea id="bericht" name="bericht" placeholder="Adres, sector, frequentie, m2, extra wensen..." required></textarea>
-            </div>
-            <button class="btn primary" type="submit">Verstuur aanvraag</button>
-            <div class="small">Dit opent je e-mail app met een ingevulde boodschap.</div>
-          </form>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <div class="footer">
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>© <span id="year"></span> Baicera • Schoonmaakdiensten</div>
-        <div class="small">Gent & omgeving • Tel: 0499 36 75 84 • info@baicera.be</div>
-      </div>
+      <!-- 3: champagne (art vibe) -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=70" alt="Opleverschoonmaak" />
+        </div>
+        <div class="panel champ">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 19h16M7 19V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13" stroke="#1a1b15" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 9h4M10 12h4M10 15h4" stroke="#1a1b15" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="h3">Opleverschoonmaak</h3>
+          <p class="p">Na renovatie of verhuis: een spotless oplevering. Detailafwerking die jouw ruimte meteen premium laat ogen.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Opleverschoonmaak">Gratis offerte</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4: aqua -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=1400&q=70" alt="Eenmalige schoonmaak" />
+        </div>
+        <div class="panel aqua">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 20h16" stroke="#031a22" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 18l3-10h4l3 10" stroke="#031a22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 14h6" stroke="#031a22" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="h3">Eenmalige Schoonmaak</h3>
+          <p class="p">Snelle opstart voor events, extra controles of een eenmalige deep clean. Ideaal als boost voor je locatie.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Eenmalige%20schoonmaak">Gratis offerte</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5: white -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=70" alt="Ramenwassen Gent" />
+        </div>
+        <div class="panel">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16v16H4z" stroke="#0b1530" stroke-width="2"/>
+              <path d="M4 12h16M12 4v16" stroke="#0b1530" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="h3">Ramenwassen Gent</h3>
+          <p class="p">Streeploos glas en een frisse uitstraling. Perfect voor inkomzones, etalages en kantoorruimtes.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Ramenwassen">Gratis offerte</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6: champagne -->
+      <article class="card">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?auto=format&fit=crop&w=1400&q=70" alt="Zetel en tapijtreiniging" />
+        </div>
+        <div class="panel champ">
+          <div class="iconBox" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M6 16V10a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v6" stroke="#1a1b15" stroke-width="2" stroke-linecap="round"/>
+              <path d="M5 16h14M7 20v-2M17 20v-2" stroke="#1a1b15" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="h3">Zetel- & Tapijtreiniging</h3>
+          <p class="p">Diepe reiniging, frisse look en betere hygiene. Hardnekkige vlekken en geuren? Wij pakken het aan.</p>
+          <div class="btnRow">
+            <a class="btn" href="mailto:info@baicera.be?subject=Gratis%20offerte%20-%20Zetel%20en%20tapijtreiniging">Gratis offerte</a>
+          </div>
+        </div>
+      </article>
     </div>
   </main>
 
-  <!-- WhatsApp floating button -->
-  <a class="wa" target="_blank" rel="noopener" href="https://wa.me/32499367584?text=Hallo%20Baicera%2C%20ik%20wil%20graag%20een%20offerte%20voor%20schoonmaak.%20Kan%20ik%20meer%20info%20krijgen%3F">
-    <div class="waIcon" aria-hidden="true">
-      <!-- Simple chat icon -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M20 12c0 4.418-4.03 8-9 8-1.1 0-2.16-.16-3.14-.46L4 20l.7-3.02A7.33 7.33 0 0 1 2 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z" stroke="rgba(234,240,255,.92)" stroke-width="1.8" stroke-linejoin="round"/>
-        <path d="M7.8 12h.01M11.8 12h.01M15.8 12h.01" stroke="rgba(234,240,255,.92)" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div>
-      <span>WhatsApp</span>
-      <small>Snelle offerte</small>
-    </div>
+  <footer>
+    © <span id="y"></span> Baicera • Gent & omgeving • info@baicera.be • +32 499 36 75 84
+  </footer>
+
+  <a class="wa" target="_blank" rel="noopener"
+     href="https://wa.me/32499367584?text=Hallo%20Baicera%2C%20ik%20wil%20graag%20een%20gratis%20offerte%20voor%20schoonmaak.%20Kan%20je%20mij%20helpen%3F"
+     aria-label="WhatsApp Baicera">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 12c0 4.418-4.03 8-9 8-1.1 0-2.16-.16-3.14-.46L4 20l.7-3.02A7.33 7.33 0 0 1 2 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z" stroke="#01202a" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M7.8 12h.01M11.8 12h.01M15.8 12h.01" stroke="#01202a" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
   </a>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function openMail(e){
-      e.preventDefault();
-      const naam = encodeURIComponent(document.getElementById("naam").value.trim());
-      const bedrijf = encodeURIComponent(document.getElementById("bedrijf").value.trim());
-      const email = encodeURIComponent(document.getElementById("email").value.trim());
-      const bericht = encodeURIComponent(document.getElementById("bericht").value.trim());
-
-      const subject = encodeURIComponent("Offerte aanvraag - Baicera");
-      const body = encodeURIComponent(
-        "Hallo Baicera,\n\n" +
-        "Graag een offerte voor schoonmaak.\n\n" +
-        "Naam: " + decodeURIComponent(naam) + "\n" +
-        (bedrijf ? ("Bedrijf/organisatie: " + decodeURIComponent(bedrijf) + "\n") : "") +
-        "E-mail: " + decodeURIComponent(email) + "\n\n" +
-        "Bericht:\n" + decodeURIComponent(bericht) + "\n\n" +
-        "Dank u!"
-      );
-
-      window.location.href = "mailto:info@baicera.be?subject=" + subject + "&body=" + body;
-      return false;
-    }
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
